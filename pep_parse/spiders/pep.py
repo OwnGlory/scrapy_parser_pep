@@ -14,13 +14,15 @@ class PepSpider(scrapy.Spider):
                 author_link, callback=self.parse_pep
             )
 
-    def parse_pep(self, response): 
-        title_text = response.css('section#pep-content h1.page-title::text').get()
+    def parse_pep(self, response):
+        title_text = response.css(
+            'section#pep-content h1.page-title::text'
+        ).get()
         title_parts = title_text.split(' – ')
 
-        data = { 
-            'number': title_parts[0].replace('PEP ', ''), 
-            'name': title_parts[1], 
-            'status': response.css('section#pep-content abbr::text').get() 
-        } 
+        data = {
+            'number': title_parts[0].replace('PEP ', ''),
+            'name': title_parts[1],
+            'status': response.css('section#pep-content abbr::text').get()
+        }
         yield PepParseItem(data)

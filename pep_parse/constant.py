@@ -1,1 +1,1 @@
-ALLOWED_DOMAINS_PEP =  ['peps.python.org']
+ALLOWED_DOMAINS_PEP = ['peps.python.org']
