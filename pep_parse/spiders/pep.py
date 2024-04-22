@@ -6,7 +6,7 @@ from pep_parse.constant import ALLOWED_DOMAINS_PEP
 class PepSpider(scrapy.Spider):
     name = 'pep'
     allowed_domains = ALLOWED_DOMAINS_PEP
-    start_urls = ['https://' + allowed_domains[0]]
+    start_urls = ['https://' + allowed_domains[0] + '/']
 
     def parse(self, response):
         for author_link in response.css('a[href^="pep-"]'):
